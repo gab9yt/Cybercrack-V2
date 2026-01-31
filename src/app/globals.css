@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 120 100% 50%; /* Green */
+
+    --card: 0 0% 0%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 100% 50%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 120 100% 50%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 50.2%; /* Gray */
+    --accent-foreground: 120 100% 50%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 100% 50%; /* Green */
+    --input: 120 100% 50%; /* Green for input border */
+    --ring: 120 100% 50%;
+
+    --radius: 0rem;
+  }
+
+  .dark {
+    /* Same as root for a forced dark theme */
+    --background: 0 0% 0%; /* Black */
+    --foreground: 120 100% 50%; /* Green */
+
+    --card: 0 0% 0%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 100% 50%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 120 100% 50%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 50.2%; /* Gray */
+    --accent-foreground: 120 100% 50%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 100% 50%; /* Green */
+    --input: 120 100% 50%; /* Green for input border */
+    --ring: 120 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    text-shadow: 0 0 2px hsl(var(--foreground)), 0 0 5px hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 5px hsl(var(--foreground)), 0 0 10px hsl(var(--foreground));
+  }
+  .crt-scanlines::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .crt-flicker::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: 0.1;
+    }
+    20% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.2;
+    }
+    30% {
+      opacity: 0.9;
+    }
+    35% {
+      opacity: 0.1;
+    }
+    40% {
+      opacity: 0.8;
+    }
+    45% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+}
